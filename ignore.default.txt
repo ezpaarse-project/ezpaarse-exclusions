@@ -1,0 +1,3 @@
+# Ignored domains
+www.google.fr
+www.google.com
