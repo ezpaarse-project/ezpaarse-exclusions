@@ -2,11 +2,43 @@
 
 'use strict';
 
-var fs      = require('fs');
-var path    = require('path');
-var request = require('request').defaults({
+var Transform = require('stream').Transform;
+var fs        = require('fs');
+var path      = require('path');
+var unzip     = require('unzip');
+var request   = require('request').defaults({
   proxy: process.env.HTTP_PROXY || process.env.http_proxy
 });
+
+var LineModifier = function (modifier) {
+  Transform.call(this);
+  this.buffer   = '';
+  this.modifier = modifier;
+};
+require('util').inherits(LineModifier, Transform);
+
+LineModifier.prototype._transform = function(chunk, encoding, callback) {
+  var self     = this;
+  this.buffer += chunk.toString();
+  var lines    = this.buffer.split(/\r?\n/);
+  this.buffer  = lines.pop() || '';
+
+  lines.forEach(function (line) {
+    var line = self.modifier(line);
+    if (line !== null) { self.push(line + '\n'); }
+  });
+  callback();
+};
+
+LineModifier.prototype._flush = function(callback) {
+  var self = this;
+  this.buffer.split(/\r?\n/).forEach(function (line) {
+    var line = self.modifier(line);
+    if (line !== null) { self.push(line + '\n'); }
+  });
+  callback();
+};
+
 
 var dir = path.join(__dirname, '../..');
 
@@ -62,25 +94,46 @@ module.exports = function scraper() {
           return next();
         }
 
-        res.pipe(fs.createWriteStream(location))
-          .on('error', function (err) {
-            nbFail++;
-            process.stdout.write('fail ✘\n');
-            busy = false;
-            next();
-          })
-          .on('finish', function () {
-            nbDl++;
-            process.stdout.write('done ✔\n');
-            busy = false;
-            next();
-          })
+        (function checkZip(callback) {
+          if (!list.options.unzip) {
+            return callback(res);
+          }
+
+          var firstEntry = true;
+
+          res.pipe(unzip.Parse()).on('entry', function (entry) {
+            if (firstEntry) {
+              firstEntry = false;
+              callback(entry);
+            } else {
+              entry.autodrain();
+            }
+          });
+        })(function (stream) {
+          if (list.options.modifier) {
+            stream = stream.pipe(new LineModifier(list.options.modifier));
+          }
+
+          stream.pipe(fs.createWriteStream(location))
+            .on('error', function (err) {
+              nbFail++;
+              process.stdout.write('fail ✘\n');
+              busy = false;
+              next();
+            })
+            .on('finish', function () {
+              nbDl++;
+              process.stdout.write('done ✔\n');
+              busy = false;
+              next();
+            });
+        });
       });
   };
 
   return {
-    download: function (listName, url) {
-      lists.push({ url: url, name: listName });
+    download: function (listName, url, options) {
+      lists.push({ url: url, name: listName, options: options || {} });
       next();
       return this;
     },
