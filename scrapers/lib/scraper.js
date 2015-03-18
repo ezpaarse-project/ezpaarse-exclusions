@@ -11,7 +11,7 @@ var request   = require('request').defaults({
 });
 
 var LineModifier = function (modifier) {
-  Transform.call(this);
+  Transform.call(this, { objectMode: true });
   this.buffer   = '';
   this.modifier = modifier;
 };
