@@ -52,14 +52,16 @@ module.exports = function scraper() {
   var lists  = [];
   var nbDl   = 0;
   var nbFail = 0;
-  var done   = false;
+  var noMore = false;
   var busy   = false;
   var index  = 0;
+  var done;
 
   var finish = function () {
     console.log('\nDownloaded : %d', nbDl);
     console.log('Failed : %d', nbFail);
-    process.exit(nbFail ? 1 : 0);
+
+    if (typeof done === 'function') { done(nbFail || null); }
   };
 
   /**
@@ -69,7 +71,7 @@ module.exports = function scraper() {
     var list = lists[index];
     if (busy) { return; }
     if (!list) {
-      if (done) { finish(); }
+      if (noMore) { finish(); }
       return;
     }
 
@@ -137,8 +139,9 @@ module.exports = function scraper() {
       next();
       return this;
     },
-    done: function () {
-      done = true;
+    done: function (cb) {
+      noMore = true;
+      done   = cb;
       if (!busy && index >= lists.length) { finish(); }
     }
   };

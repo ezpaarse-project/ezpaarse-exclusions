@@ -2,7 +2,12 @@
 
 'use strict';
 
-require('./lib/scraper.js')()
+var scraper = require('./lib/scraper.js');
+
+if (module.parent) {
+  module.exports = scraper;
+} else {
+  scraper()
   .download('myip_live', 'http://myip.ms/files/bots/live_webcrawlers.txt')
   .download('myip_blacklist', 'http://myip.ms/files/blacklist/general/full_blacklist_database.zip', {
     unzip: true,
@@ -12,4 +17,7 @@ require('./lib/scraper.js')()
       return index > 0 ? line.substr(0, index).trim() : line;
     }
   })
-  .done();
+  .done(function (err) {
+    process.exit(err ? 1 : 0);
+  });
+}
