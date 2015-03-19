@@ -4,9 +4,7 @@
 
 var scraper = require('./lib/scraper.js');
 
-if (module.parent) {
-  module.exports = scraper;
-} else {
+function scrape(callback) {
   scraper()
   .download('myip_live', 'http://myip.ms/files/bots/live_webcrawlers.txt')
   .download('myip_blacklist', 'http://myip.ms/files/blacklist/general/full_blacklist_database.zip', {
@@ -17,7 +15,13 @@ if (module.parent) {
       return index > 0 ? line.substr(0, index).trim() : line;
     }
   })
-  .done(function (err) {
+  .done(callback);
+}
+
+if (module.parent) {
+  module.exports = scrape;
+} else {
+  scrape(function (err) {
     process.exit(err ? 1 : 0);
   });
 }

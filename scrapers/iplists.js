@@ -4,9 +4,7 @@
 
 var scraper = require('./lib/scraper.js');
 
-if (module.parent) {
-  module.exports = scraper;
-} else {
+function scrape(callback) {
   scraper()
   .download('google',    'http://www.iplists.com/nw/google.txt')
   .download('yahoo',     'http://www.iplists.com/nw/inktomi.txt')
@@ -17,7 +15,13 @@ if (module.parent) {
   .download('ask',       'http://www.iplists.com/nw/askjeeves.txt')
   .download('misc',      'http://www.iplists.com/nw/misc.txt')
   .download('nospider',  'http://www.iplists.com/nw/non_engines.txt')
-  .done(function (err) {
+  .done(callback);
+}
+
+if (module.parent) {
+  module.exports = scrape;
+} else {
+  scrape(function (err) {
     process.exit(err ? 1 : 0);
   });
 }
