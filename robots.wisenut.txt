@@ -3,6 +3,7 @@
 # UA "Mozilla/4.0 compatible ZyBorg/1.0 Dead Link Checker (wn.zyborg@looksmart.net; http://www.WISEnutbot.com)"
 64.241.243.123
 64.241.242.177
+64.241.243.65
 64.241.243.124
 64.242.88.10
 64.242.88.50

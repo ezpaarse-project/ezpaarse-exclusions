@@ -253,6 +253,7 @@ xs4.kso.co.uk
 # UA "ozilla/4.7 (compatible; Whizbang)"
 # WhizBang is a company that sells a spider to build databases
 pixnat06.whizbang.com
+63.173.190.16
 pixnat09.whizbang.com
 63.173.190.19
 
