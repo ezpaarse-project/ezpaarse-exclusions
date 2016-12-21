@@ -1,0 +1,10 @@
+# Ignored domains
+sdfestaticassets-us-east-1.sciencedirectassets.com
+static.pubmed.gov
+content.readcube.com
+feeds.rsc.org
+files.sciverse.com
+images.iop.org,
+images.lexbase.fr
+images.springer.com
+staticieeexplore.ieee.org

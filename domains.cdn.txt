@@ -1,0 +1,12 @@
+# Ignored domains
+cdn.els-cdn.com
+ars.els-cdn.com
+linkinghub.elsevier.com
+origin-cdn.els-cdn.com
+sciverse-shindig.elsevier.com
+acw.sciencedirect.com
+acw.scopus.com
+sqc.webofknowledge.com
+pcs.webofknowledge.com
+cdn.wol2.wiley.com
+oup.silverchair-cdn.com
