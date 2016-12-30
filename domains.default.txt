@@ -3,3 +3,4 @@ www.google.fr
 www.google.com
 fonts.googleapis.com
 api.google.com
+apis.google.com

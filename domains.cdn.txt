@@ -1,4 +1,5 @@
 # Ignored domains
+# ac.els-cdn.com this domain it ébérge articles pdf elsevir
 cdn.els-cdn.com
 ars.els-cdn.com
 linkinghub.elsevier.com
