@@ -10,4 +10,3 @@ acw.scopus.com
 sqc.webofknowledge.com
 pcs.webofknowledge.com
 cdn.wol2.wiley.com
-oup.silverchair-cdn.com
