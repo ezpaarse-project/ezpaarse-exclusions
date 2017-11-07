@@ -52,7 +52,6 @@
 81.52.143.35
 81.52.143.36
 81.52.143.26
-81.52.143.29
 81.52.143.37
 81.67.150.241
 193.252.149.16
@@ -107,7 +106,6 @@ ns4002980.ip-142-4-208.net
 crawl-b01-s3.voilabot.orange.fr
 crawl-b05-s3.voilabot.orange.fr
 ns3342193.ovh.net
-ns4003826.ip-142-4-212.net
 ec2-54-81-90-25.compute-1.amazonaws.com
 crawl-b02-s3.voilabot.orange.fr
 ks29660.kimsufi.com
@@ -117,7 +115,6 @@ crawl-66-249-69-57.googlebot.com
 crawl02.exabot.com
 crawl-b01-s4.voilabot.orange.fr
 storm1.devel.rtgi.eu
-crawl02.exabot.com
 spider-37-140-141-39.yandex.com
 crawl-b03-s3.voilabot.orange.fr
 ec2-107-21-158-100.compute-1.amazonaws.com
@@ -166,7 +163,6 @@ crawl-66-249-70-211.googlebot.com
 crawl-66-249-67-248.googlebot.com
 crawl-66-249-67-236.googlebot.com
 crawl417.us.archive.org
-crawl-66-249-67-223.googlebot.com
 crawl454.us.archive.org
 crawl338.us.archive.org
 crawl429.us.archive.org
@@ -176,9 +172,7 @@ msnbot-157-55-39-12.search.msn.com
 ec2-54-205-95-150.compute-1.amazonaws.com
 msnbot-157-55-39-13.search.msn.com
 crawl-203-208-60-252.googlebot.com
-msnbot-157-55-39-12.search.msn.com
 ec2-54-90-176-79.compute-1.amazonaws.com
-ns3342194.ovh.net
 ec2-54-91-82-25.compute-1.amazonaws.com
 crawl-b02-s1.voilabot.orange.fr
 ec2-54-166-10-100.compute-1.amazonaws.com
@@ -211,13 +205,7 @@ msnbot-157-55-39-91.search.msn.com
 msnbot-157-55-39-231.search.msn.com
 msnbot-157-55-39-142.search.msn.com
 ca.55.4f.static.xlhost.com
-ns4003781.ip-142-4-211.net
-msnbot-157-55-39-133.search.msn.com
-msnbot-157-55-39-188.search.msn.com
 msnbot-157-55-39-90.search.msn.com
-msnbot-157-55-39-91.search.msn.com
-fetcher6-3.p.mail.ru
-ca.55.4f.static.xlhost.com
 crawl-66-249-67-67.googlebot.com
 crawl-66-249-67-54.googlebot.com
 crawl-66-249-67-80.googlebot.com
